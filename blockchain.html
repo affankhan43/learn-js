@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Blockchain</title>
+</head>
+<body>
+<h1 id="header">Blocks</h1>
+<input type="file" name="">
+<script type="text/javascript">
+	var x = {"name":"Affan","Class":"Blockchain"};
+	var cla = [{'name':"Affan","Class":"Blockchain"},{'name':"John","Class":"Blockchain"},{'name':"Beau","Class":"Blockchain"}];
+	var ledger = [{"time":"1/nov","debit":123.2,"credit":1},{"time":"2/nov","debit":12,"credit":1},{"time":"3/nov","debit":13,"credit":1},{"time":"4/nov","debit":123.2,"credit":1}];
+	var address = {"method":"generateAdress","label":"userName"};
+	function generateAdress(){
+		return "xasdadasdas";
+	}
+	console.log(generateAdress())
+	// cla.forEach(function(item,index){
+	// 	console.log(item.name)
+	// 	console.log(index)
+	// })
+	//console.log(ledger)
+	ledger.forEach((row,index)=>{
+		console.log(row.debit-row.credit)
+	});
+	//console.log(cla[2].name)
+</script>
+</body>
+</html>
