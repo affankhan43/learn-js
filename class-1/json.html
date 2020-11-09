@@ -64,10 +64,10 @@
 		}
 
 		function makeJSON(){
-			var id = document.getElementById('id').innerHTML
-			var name = document.getElementById('name').innerHTML
-			var city = document.getElementById('city').innerHTML
-			var address = document.getElementById('address').innerHTML
+			var id = document.getElementById('id').value
+			var name = document.getElementById('name').value
+			var city = document.getElementById('city').value
+			var address = document.getElementById('address').value
 			var json1 = [];
 			json1.push({"id":id,"name":name,"city":city})
 			console.log(json1)
