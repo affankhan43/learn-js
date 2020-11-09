@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON</title>
+</head>
+<body>
+	<style type="text/css">
+		#json1{
+			text-align: center;
+		}
+	</style>
+	<h1>JSON</h1>
+	<div id="json1">
+		<h2>Total Cases:</h2>
+		<span id="t_cases"></span>
+		<h2>Total Deaths:</h2>
+		<span id="t_deaths"></span>
+		<table style="padding: 55px">
+			<thead>
+				<th>Country</th>
+				<th>Cases</th>
+				<th>Recovered</th>
+			</thead>
+			<tbody id="table-content">
+				
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		function isJSON(json){
+			try{
+				JSON.parse(json);
+				return true;
+			}catch(e){
+				return false;
+			}
+		}
+		var first = '[{"id":1,"name":"a"},{"id":2,"name":"ad"},{"id":3,"name":"af"},{"id":4,"name":"adsf"}]';
+
+
+		var multi_data = {'total_cases':'3000000','total_deaths':'10000','list_countries':[{'country':'India','cases':'1000000','deaths':'1000','recovered':'90000'},{'country':'USA','cases':'1000000','deaths':'1000','recovered':'90000'},{'country':'Italy','deaths':'1000','recovered':'90000'},{'country':'France','cases':'1000000','deaths':'1000','recovered':'90000'}]};
+		
+		document.getElementById('t_cases').innerHTML = multi_data.total_cases
+		document.getElementById('t_deaths').innerHTML = multi_data.total_deaths
+		if(isJSON(JSON.stringify(multi_data.list_countries))){
+			//var data = JSON.parse(first);
+			var content = '';
+			multi_data.list_countries.forEach(function(item,index){
+				if(item.country == 'Italy'){
+					content += '<tr><td>'+item.country+'</td><td>'+item.cases+'</td><td>'+item.recovered+'</td></tr>'
+				}
+				
+			})
+			document.getElementById('table-content').innerHTML = content
+		}else{
+			console.log('Bad Response')
+		}
+
+		//console.log(isJSON(first));
+	</script>
+</body>
+</html>
