@@ -9,12 +9,16 @@
 </div>
 <input type="file" name="">
 <script type="text/javascript">
+	for(var index = 1;index<=10;index++){
 	var p = document.createElement('h2')
+	var result=2*index
 	p.innerText = "2 x "+index+" = "+result
+	document.getElementById('appender').appendChild(p)
+	}
 	var p1 = document.createElement('h2')
 	p1.innerText = "second"
 	document.getElementById('appender').appendChild(p1)
-	document.getElementById('appender').appendChild(p)
+	
 	// console.log(document.getElementById('header').innerHTML);
 	// document.getElementById('header').innerHTML = "Hello"
 	// function header_change(){
