@@ -27,11 +27,15 @@
 		</table>
 	</div>
 	<div id="form">
-		<input type="text" id="id" name="id" placeholder="Enter ID">
-		<input type="text"  id="name" name="name" placeholder="Enter Name">
-		<input type="text" id="city" name="city" placeholder="Enter Country">
-		<input type="text"  id="address" name="address" placeholder="Enter Address">
+		<form id="data_form">
+			<input type="text" id="id" name="id[]" placeholder="Enter ID">
+			<input type="text"  id="name" name="name[]" placeholder="Enter Name">
+			<input type="text" id="city" name="city[]" placeholder="Enter Country">
+			<input type="text"  id="address" name="address[]" placeholder="Enter Address">	
+		</form>
+		
 		<button id="make_json" onclick="makeJSON()">Make JSON</button>
+		<button id="add_more" onclick="addMore()">Add More</button>
 	</div>
 	<script type="text/javascript">
 		function isJSON(json){
@@ -64,13 +68,36 @@
 		}
 
 		function makeJSON(){
-			var id = document.getElementById('id').value
-			var name = document.getElementById('name').value
-			var city = document.getElementById('city').value
-			var address = document.getElementById('address').value
 			var json1 = [];
-			json1.push({"id":id,"name":name,"city":city})
+			var formdata = document.forms[0]
+			var name_array = formdata.name.forEach(function(item,index){
+				json1.push(
+					{"id":formdata.id[index].value,
+					"name":item.value,
+					"city":formdata.city[index].value,
+					'address':formdata.address[index].value
+				})
+				//console.log(item.value)
+			})
+
 			console.log(json1)
+			// var dataform = document.getElementById('data_form')
+			// dataform.forEach(function(item,index){
+			// 	console.log(item.value)
+			// })
+			// var id = document.getElementById('id').value
+			// var name = document.getElementById('name').value
+			// var city = document.getElementById('city').value
+			// var address = document.getElementById('address').value
+			// var json1 = [];
+			// json1.push({"id":id,"name":name,"city":city,'address':address})
+			// console.log(json1)
+		}
+
+		function addMore(){
+			var new_fields = document.createElement('div')
+			new_fields.innerHTML = '<input type="text" id="id[]" name="id" placeholder="Enter ID"><input type="text"  id="name" name="name[]" placeholder="Enter Name"><input type="text" id="city" name="city[]" placeholder="Enter Country"><input type="text"  id="address" name="address[]" placeholder="Enter Address">'
+			document.getElementById('data_form').append(new_fields)
 		}
 
 		//console.log(isJSON(first));
