@@ -30,5 +30,10 @@ mainMap.set('maths',maths)
 
 var arr = mainMap.entries();
 for(item of arr){
-	console.log("Percentage of "+item[0]+" : "+(mainMap.get(item[0]).get('obtained')/mainMap.get(item[0]).get('total'))*100)
+	console.log(
+		"Percentage of "
+		+item[0]+" : "+
+		(mainMap.get(item[0]).get('obtained')/mainMap.get(item[0]).get('total'))
+		*100
+	)
 }
