@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>READ JSON</title>
+	
+</head>
+<body>
+	<div id="content" style="text-align: center;">
+		
+	</div>
+	<script type="text/javascript">
+		var jsonhtml = {
+			"h2":"Class",
+			"p":"Blockchain",
+			"div":[
+				{"h2":"ProductsCount","p":"13"},
+				{"h2":"Sold","p":"3"}
+			]
+		};
+		var htmm = {
+	"table":[
+		{"thead":
+			{"tr":[
+				{"th":"name"},
+				{"th":"class"}
+			]}
+		},
+		{"tbody":
+			{"tr":[
+				{"td":{"div":[{"p":"ab"},{"p":"ac"}]}},
+				{"td":{"div":[{"p":"bb"},{"p":"bc"}]}}
+			]}
+		}
+	]
+};
+		function generator(arr){
+			var mainContain=document.createElement('div');
+			function iterateThrough(obj,elt){
+				Object.keys(obj).forEach(function(curKey){
+					if(typeof obj[curKey]==='object'){
+						if(typeof obj[curKey].length != 'undefined'){
+							var first = document.createElement(curKey)
+							obj[curKey].forEach(function(curKey2){
+								elt.appendChild(first)
+								iterateThrough(curKey2,first);
+							})
+						}else{
+							console.log(obj[curKey])
+							console.log(curKey)
+							var li=document.createElement(curKey);
+							elt.appendChild(li);
+							iterateThrough(obj[curKey],li);
+						}
+					}
+					else{
+						var li=document.createElement(curKey);
+						li.innerText = obj[curKey]
+						elt.appendChild(li);
+					}
+				});
+			}
+			iterateThrough(arr,mainContain);
+			return mainContain;
+		}
+		document.getElementById('content').appendChild(generator(htmm));
+		
+	</script>
+</body>
+</html>

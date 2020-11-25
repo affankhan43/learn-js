@@ -1,9 +1,16 @@
 {
 	"table":[
 		{"thead":
-			{"tr":[{"th":"name"},{"th":"class"}]
+			{"tr":[
+				{"th":"name"},
+				{"th":"class"}
+			]}
+		},
+		{"tbody":
+			{"tr":[
+				{"td":"name"},
+				{"td":"class"}
+			]}
 		}
-	},
-	{"tbody":}
 	]
 }
