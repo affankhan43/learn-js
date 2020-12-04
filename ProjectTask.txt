@@ -1,0 +1,35 @@
+Project
+- Name
+- Type
+- Days
+- Tasks
+- DaysCompleted
+
+* DaysRemaining()
+* TotalTasks()
+* Status() //notstarted, inprogress, done
+* CompletedTasks()
+* PendingTasks()
+* TaskAssigneee(TaskId) 
+* DeleteTask()
+* AddTask
+* ChangeAssignee(TaskId,AssigneeId)
+
+
+Task
+-Name
+-Days
+-Assignee
+-TaskStatus
+
+* ChangeTaskStatus()
+
+
+
+Assignee
+
+-Name
+-Title
+-Status
+
+* ChangeStatus()
