@@ -76,6 +76,7 @@ class project{
 	}
 	changeTask(taskid){
 		console.log(this.tasks.get(taskid))
+		this.tasks.get(taskid).tname = 'arch'
 	}
 }
 
@@ -102,3 +103,4 @@ var pro = new project(tasklist)
 console.log(pro.print())
 console.log(pro.total())
 pro.changeTask('1')
+console.log(task1)
