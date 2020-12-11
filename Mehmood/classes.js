@@ -36,7 +36,7 @@ class project{
         console.log("Pending Tasks: "+countt)
     }
     taskassignee(taskid,assignee){
-        this.tasks.get(taskid).assignee = newassign
+        this.tasks.get(taskid).assignee = assignee
     }
     deletetask(taskid){
         this.tasks.delete(taskid)
@@ -50,6 +50,9 @@ class project{
     }
     printstatustask(taskid){
         return this.tasks.get(taskid).statt
+    }
+    printtask(taskid){
+        return this.tasks.get(taskid)
     }
     changestatustask(taskid){
         this.tasks.get(taskid).statt="Completed"
@@ -90,24 +93,28 @@ tasklist.set(2,task2);
 tasklist.set(3,task3);
 
 var chstat=new project(tasklist, 'In Progress')
-console.log("\nProject Status: "+chstat.status())
-console.log("\nTask Status: "+chstat.printstatustask(3))
-chstat.changestatustask(3)
-console.log("\nNew Task Status: "+chstat.printstatustask(3))
-// console.log("Task 3 Assignee: ",task3.assignee.name)
-console.log(task3)
+// console.log("\nProject Status: "+chstat.status())
+// console.log("\nTask Status: "+chstat.printstatustask(3))
+// chstat.changestatustask(3)
+// console.log("\nNew Task Status: "+chstat.printstatustask(3))
+// // console.log("Task 3 Assignee: ",task3.assignee.name)
+// console.log(task3)
 
 var proj=new project(tasklist)
-console.log("\nTotal Tasks: "+proj.totaltasks())
-chstat.completedtasks()
-chstat.pendingtasks()
-chstat.deletetask(1)
-console.log("Total Tasks After Deletion: "+proj.totaltasks()+"\n")
-proj.addtask()
-proj.taskassignee(4)
-console.log(task2)
-proj.changeassignee(2,assign)
-console.log("New Assignee: ",task2)
+// console.log("\nTotal Tasks: "+proj.totaltasks())
+// chstat.completedtasks()
+// chstat.pendingtasks()
+// chstat.deletetask(1)
+// console.log("Total Tasks After Deletion: "+proj.totaltasks()+"\n")
+// proj.addtask()
+// proj.taskassignee(4)
+// console.log(task2)
+// proj.changeassignee(2,assign)
+// console.log("New Assignee: ",task2)
 
-proj.taskassignee(4,assignee)
-console.log("Assignee Assigned: ",newtask)
+// proj.taskassignee(4,assignee)
+// console.log("Assignee Assigned: ",newtask)
+var newperson= new assignee('Mehmood','Web Developer','Active')
+console.log(proj.printtask(4))
+proj.changeassignee(4,newperson)
+console.log(proj.printtask(4))
