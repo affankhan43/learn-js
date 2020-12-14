@@ -1,0 +1,11 @@
+{
+  "name": "class-x",
+  "version": "0.1.2",
+  "description": "",
+  "main": "alpha.js",
+  "scripts": {
+    "test": "node alpha.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
