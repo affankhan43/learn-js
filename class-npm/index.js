@@ -13,9 +13,12 @@ http.createServer(function(req,res){
 		res.write('Welcome To Post')
 		res.end()
 	}else{
-		// res.writeHead(200,{'contentType':'application/json'})
-		// res.write("{'text':'asdasds'}")
-		// res.end()
+		var data = {'text':'asdasds'}
+		var d = 1;
+
+		res.writeHead(200,{'contentType':'application/json'})
+		res.write(d.toString())
+		res.end()
 	}
 	
 }).listen(90)
