@@ -18,7 +18,9 @@ var covid = {
 	'total_deaths':90000,
 	'total_recovered':600000,
 	'countries':[
-		{'USA':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000,'cities':
+		{'USA':{
+			'total_cases':540600,'total_deaths':50000,'total_recovered':100000,
+			'cities':
 			[
 				{'NewYork':{
 					'total_cases':540600,'total_deaths':50000,'total_recovered':100000
