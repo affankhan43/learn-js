@@ -18,14 +18,15 @@
 			]
 		};
 		var htmm = {
-	"table":[
-		{"thead":
-			{"tr":[
-				{"th":"name"},
-				{"th":"class"}
-			]}
-		},
-		{"tbody":
+			"table":[
+				{"thead":
+					{"tr":[
+						{"th":"name"},
+						{"th":"class"}
+					]
+				}
+			},
+			{"tbody":
 			{"tr":[
 				{"td":{"div":[{"p":"ab"},{"p":"ac"}]}},
 				{"td":{"div":[{"p":"bb"},{"p":"bc"}]}}
@@ -33,6 +34,39 @@
 		}
 	]
 };
+var covid = {
+	'total_cases':740600,
+	'total_deaths':90000,
+	'total_recovered':600000,
+	'countries':[
+		{'USA':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
+		{'India':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
+		{'Brazil':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
+	]
+};
+function generator_new(arr){
+	function itr(obj){
+		Object.keys(obj).forEach(function(key1){
+			if(typeof obj[key1] == 'object'){
+				if(typeof obj[key1].length != 'undefined'){
+					console.log(key1)
+					obj[key1].forEach(function(key2){
+						
+						itr(key2);
+					})
+				}else{
+					//console.log(obj[key1])
+					console.log(key1)
+					itr(obj[key1]);
+				}
+			}else{
+				console.log(key1+ ' : '+obj[key1])
+			}
+		})
+	}
+	itr(arr);
+}
+generator_new(covid)
 		function generator(arr){
 			var mainContain=document.createElement('div');
 			function iterateThrough(obj,elt){
@@ -62,7 +96,7 @@
 			iterateThrough(arr,mainContain);
 			return mainContain;
 		}
-		document.getElementById('content').appendChild(generator(htmm));
+		//document.getElementById('content').appendChild(generator(htmm));
 		
 	</script>
 </body>

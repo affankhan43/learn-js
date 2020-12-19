@@ -9,41 +9,92 @@ function is_json(str){
 	}
 }
 var num = 'One'
-console.log(parseInt(num))
-console.log(JSON.stringify(jso))
-is_json(first)
+// console.log(parseInt(num))
+// console.log(JSON.stringify(jso))
+// is_json(first)
 
 var covid = {
 	'total_cases':740600,
 	'total_deaths':90000,
 	'total_recovered':600000,
 	'countries':[
-		{'USA':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
+		{'USA':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000,'cities':
+			[
+				{'NewYork':{
+					'total_cases':540600,'total_deaths':50000,'total_recovered':100000
+				}},
+				{'Brooklyn':
+					{'total_cases':540600,'total_deaths':50000,'total_recovered':100000
+				}}
+			]}},
 		{'India':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
 		{'Brazil':{'total_cases':540600,'total_deaths':50000,'total_recovered':100000}},
 	]
 };
-for(item in covid){
-	if(typeof covid[item] == 'number'){
-		console.log(item + ' ' +covid[item])	
-	}else if(typeof covid[item] == 'object'){
-		console.log('  '+item+': ')
-		if(typeof covid[item].length == 'number'){
-			covid[item].forEach(function(pro,i){
-				for(item2 in covid[item][i]){
-					console.log('    '+item2+': ')
-					for(item3 in covid[item][i][item2]){
-						console.log('      '+item3+' '+covid[item][i][item2][item3])
-					}
-					//console.log(item2)
+
+function generator_new(arr){
+	function itr(obj){
+		Object.keys(obj).forEach(function(key1){
+			if(typeof obj[key1] == 'object'){
+				if(typeof obj[key1].length != 'undefined'){
+					console.log(key1)
+					obj[key1].forEach(function(key2){
+						//console.log(key2)
+						itr(key2);
+					})
+				}else{
+					//console.log(obj[key1])
+					console.log(key1)
+					itr(obj[key1]);
 				}
-			})
-		}else{
-			console.log('Object')
-		}	
+			}else{
+				console.log(key1+ ' : '+obj[key1])
+			}
+		})
 	}
-	
+	itr(arr);
 }
+function generator_new2(obj){
+	Object.keys(obj).forEach(function(key1){
+		if(typeof obj[key1] == 'object'){
+			if(typeof obj[key1].length != 'undefined'){
+				console.log(key1)
+				obj[key1].forEach(function(key2){
+					//console.log(key2)
+					generator_new2(key2);
+				})
+			}else{
+				//console.log(obj[key1])
+				console.log(key1)
+				generator_new2(obj[key1]);
+			}
+		}else{
+			console.log(key1+ ' : '+obj[key1])
+		}
+	})
+}
+generator_new2(covid)
+// for(item in covid){
+// 	if(typeof covid[item] == 'number'){
+// 		console.log(item + ' ' +covid[item])	
+// 	}else if(typeof covid[item] == 'object'){
+// 		console.log('  '+item+': ')
+// 		if(typeof covid[item].length == 'number'){
+// 			covid[item].forEach(function(pro,i){
+// 				for(item2 in covid[item][i]){
+// 					console.log('    '+item2+': ')
+// 					for(item3 in covid[item][i][item2]){
+// 						console.log('      '+item3+' '+covid[item][i][item2][item3])
+// 					}
+// 					//console.log(item2)
+// 				}
+// 			})
+// 		}else{
+// 			console.log('Object')
+// 		}	
+// 	}
+	
+// }
 // covid.forEach(function(item,ind){
 // 	console.log(ind)
 // 	console.log(item)
