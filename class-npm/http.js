@@ -1,3 +1,4 @@
+const http = require('http')
 const fs = require('fs');
 const path = require('path');
 
@@ -11,6 +12,11 @@ const server = http.createServer((req, res) => {
     else fileUrl = req.url;
 
     var filePath = path.resolve('./public'+fileUrl);
+    console.log(filePath)
+    var authHeader = req.headers.authorization
+    console.log(authHeader)
+    var arr = new Buffer(authHeader.split(' ')[1], 'base64').toString()
+    console.log(arr)
     const fileExt = path.extname(filePath);
     if (fileExt == '.html') {
       fs.exists(filePath, (exists) => {
@@ -23,7 +29,7 @@ const server = http.createServer((req, res) => {
         }
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
-        fs.createReadStream(filePath).pipe(res);
+        fs.createReadStream('./public'+fileUrl).pipe(res);
       });
     }
     else {
@@ -40,3 +46,5 @@ const server = http.createServer((req, res) => {
               ' not supported</h1></body></html>');
   }
 })
+
+server.listen(90)
